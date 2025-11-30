@@ -1,11 +1,15 @@
 name: 4. Build Loop
 run-name: Build Loop (${{ github.ref_name }})
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    
   schedule:
     # Check for updates every Sunday
     #   Later logic builds if there are updates or if it is the 2nd Sunday of the month
-    - cron: "33 7 * * 0" # Sunday at UTC 7:33
+    - cron: "33 19 * * 0" # Sunday at UTC 7:33
+  workflow_dispatch:
 
 env:
   GH_PAT: ${{ secrets.GH_PAT }}
